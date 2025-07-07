@@ -1,0 +1,25 @@
+<div class="app-container">
+  <header class="app-header">
+    <h1>Task Manager</h1>
+  </header>
+
+  <main class="app-main">
+    <ng-container *ngIf="!isLoggedIn; else dashboard">
+      <app-login></app-login>
+    </ng-container>
+
+    <ng-template #dashboard>
+      <div class="dashboard-layout">
+        <div class="task-list-area">
+          <app-task-list (editTask)="onEditTask($event)"></app-task-list>
+        </div>
+        <div class="task-form-area">
+          <app-task-form
+            [selectedTask]="selectedTaskForEdit"
+            (taskSaved)="onTaskSaved()">
+          </app-task-form>
+        </div>
+      </div>
+    </ng-template>
+  </main>
+</div>

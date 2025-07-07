@@ -1,0 +1,220 @@
+/* src/app/components/task-list/task-list.component.css */
+.task-list-container {
+    padding: 20px;
+    background-color: #f0f2f5;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .header h2 {
+    color: #333;
+    margin: 0;
+  }
+  
+  .logout-button {
+    padding: 8px 15px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9em;
+    transition: background-color 0.3s ease;
+  }
+  
+  .logout-button:hover {
+    background-color: #c82333;
+  }
+  
+  .message {
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    font-weight: bold;
+    text-align: center;
+  }
+  
+  .error-message {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .success-message {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .filters-sort {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap on smaller screens */
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+  }
+  
+  .filters-sort input[type="text"],
+  .filters-sort select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    flex-grow: 1; /* Allows inputs to grow */
+    min-width: 150px; /* Minimum width before wrapping */
+  }
+  
+  .filters-sort button {
+      padding: 8px 15px;
+      background-color: #6c757d;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+  }
+  .filters-sort button:hover {
+      background-color: #5a6268;
+  }
+  
+  
+  .task-cards {
+    display: grid;
+    gap: 15px;
+    /* Adjust grid columns for responsiveness */
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  }
+  
+  .no-tasks-message {
+      text-align: center;
+      padding: 20px;
+      grid-column: 1 / -1; /* Make it span all columns in the grid */
+      color: #777;
+  }
+  
+  .task-card {
+    background-color: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    padding: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .task-card.completed {
+    border-left: 5px solid #28a745; /* Green border for completed */
+    background-color: #e9f5ed; /* Light green background */
+  }
+  
+  .task-card h3 {
+    color: #007bff;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.2em;
+  }
+  
+  .task-card .description {
+    color: #555;
+    font-size: 0.9em;
+    margin-bottom: 15px;
+    flex-grow: 1; /* Allows description to take available space */
+  }
+  
+  .task-card .status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.85em;
+  }
+  
+  .task-card .status strong {
+    color: #333;
+  }
+  
+  .status-completed {
+    color: #28a745; /* Green */
+    font-weight: bold;
+  }
+  
+  .status-pending {
+    color: #ffc107; /* Orange/Yellow */
+    font-weight: bold;
+  }
+  
+  .task-card .actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap; /* Allow buttons to wrap */
+    margin-top: 10px;
+  }
+  
+  .task-card .actions button {
+    padding: 8px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.8em;
+    transition: background-color 0.3s ease;
+    flex-grow: 1; /* Make buttons grow to fill space */
+  }
+  
+  .mark-complete {
+    background-color: #28a745;
+    color: white;
+  }
+  .mark-complete:hover {
+    background-color: #218838;
+  }
+  
+  .mark-pending {
+      background-color: #ffc107;
+      color: #333;
+  }
+  .mark-pending:hover {
+      background-color: #e0a800;
+  }
+  
+  .edit-button {
+    background-color: #007bff;
+    color: white;
+  }
+  .edit-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  .delete-button:hover {
+    background-color: #c82333;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+      .filters-sort {
+          flex-direction: column; /* Stack filters vertically */
+          align-items: stretch; /* Stretch items to full width */
+      }
+      .filters-sort input[type="text"],
+      .filters-sort select,
+      .filters-sort button {
+          width: 100%; /* Full width on small screens */
+          box-sizing: border-box;
+      }
+      .task-cards {
+          grid-template-columns: 1fr; /* Single column layout */
+      }
+      .task-card .actions {
+          flex-direction: column; /* Stack action buttons */
+      }
+  }

@@ -1,0 +1,53 @@
+<div class="task-list-container">
+    <div class="header">
+      <h2>Task List</h2>
+      <button (click)="logout()" class="logout-button">Logout</button>
+    </div>
+  
+    <p *ngIf="errorMessage" class="message error-message">{{ errorMessage }}</p>
+    <p *ngIf="successMessage" class="message success-message">{{ successMessage }}</p>
+  
+    <div class="filters-sort">
+      <input type="text" [(ngModel)]="searchTerm" (input)="onSearchTermChange()" placeholder="Search tasks by title or description">
+  
+      <select [(ngModel)]="filterCompleted" (change)="onFilterChange()">
+        <option value="all">All Tasks</option>
+        <option value="completed">Completed</option>
+        <option value="pending">Pending</option>
+      </select>
+  
+      <select [(ngModel)]="sortBy" (change)="onSortChange($event)">
+        <option value="createdDate">Sort by Date</option>
+        <option value="title">Sort by Title</option>
+        <option value="isCompleted">Sort by Status</option>
+      </select>
+  
+      <button (click)="toggleSortDirection()" class="sort-direction-button">
+          {{ sortDirection === 'asc' ? 'Asc' : 'Desc' }}
+      </button>
+    </div>
+  
+    <div class="task-cards">
+      <div *ngIf="filteredTasks.length === 0" class="no-tasks-message">
+        <p>No tasks found.</p>
+      </div>
+      <div *ngFor="let task of filteredTasks" class="task-card" [class.completed]="task.isCompleted">
+        <h3>{{ task.title }}</h3>
+        <p class="description">{{ task.description }}</p>
+        <div class="status">
+          <strong>Status:</strong>
+          <span [class.status-completed]="task.isCompleted" [class.status-pending]="!task.isCompleted">
+            {{ task.isCompleted ? 'Completed' : 'Pending' }}
+          </span>
+          <span class="created-date">Created: {{ task.createdDate | date:'short' }}</span>
+        </div>
+        <div class="actions">
+          <button (click)="markAsCompleted(task)" [class.mark-pending]="task.isCompleted" [class.mark-complete]="!task.isCompleted">
+            {{ task.isCompleted ? 'Mark Pending' : 'Mark Complete' }}
+          </button>
+          <button (click)="onEditTask(task)" class="edit-button">Edit</button>
+          <button (click)="deleteTask(task.id)" class="delete-button">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>

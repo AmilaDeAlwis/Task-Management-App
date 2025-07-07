@@ -1,0 +1,63 @@
+/* Global Styles */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #e9ebee;
+    color: #333;
+  }
+  
+  .app-container {
+    min-height: 100vh; 
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .app-header {
+    background-color: #007bff;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  }
+  
+  .app-header h1 {
+    margin: 0;
+    font-size: 1.8em;
+  }
+  
+  .app-main {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .dashboard-layout {
+    display: grid;
+    gap: 20px; 
+    grid-template-columns: 1fr 1fr; 
+    max-width: 1200px; 
+    margin: 0 auto; 
+  }
+  
+  .task-list-area {
+    /* Takes up the left side, or full width on small screens */
+  }
+  
+  .task-form-area {
+    /* Takes up the right side, or full width on small screens */
+  }
+  
+  /* Basic Responsive Design */
+  @media (max-width: 992px) {
+    .dashboard-layout {
+      grid-template-columns: 1fr; /* Stack columns vertically on medium screens */
+    }
+  }
+  
+  @media (max-width: 576px) {
+    .app-main {
+      padding: 10px; /* Smaller padding on very small screens */
+    }
+    .app-header h1 {
+      font-size: 1.5em;
+    }
+  }
